@@ -15,6 +15,7 @@ import javax.persistence.*;
 @Table(name="bids")
 @Getter
 @Setter
+
 @NoArgsConstructor
 public class Bid {
     @Id

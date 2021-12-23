@@ -42,8 +42,7 @@ public class Produce {
 
     private LocalDateTime end;
 
-    public Produce(String produce, Fertilizer fertilizer, double quintal,
-                   double bidPrice, String kind, Type type, LocalDateTime start, LocalDateTime end) {
+    public Produce(String produce, Fertilizer fertilizer, double quintal, double bidPrice, String kind, Type type, LocalDateTime start, LocalDateTime end) {
         this.produce = produce;
         this.fertilizer = fertilizer;
         this.quintal = quintal;
