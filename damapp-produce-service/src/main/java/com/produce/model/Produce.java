@@ -5,6 +5,7 @@ package com.produce.model;/*
  */
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
 @Table(name="produces")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Produce {
     @Id
     @Column(length = 20, name = "produceid")
@@ -40,8 +42,15 @@ public class Produce {
 
     private LocalDateTime end;
 
-
-
-
-
+    public Produce(String produce, Fertilizer fertilizer, double quintal,
+                   double bidPrice, String kind, Type type, LocalDateTime start, LocalDateTime end) {
+        this.produce = produce;
+        this.fertilizer = fertilizer;
+        this.quintal = quintal;
+        this.bidPrice = bidPrice;
+        this.kind = kind;
+        this.type = type;
+        this.start = start;
+        this.end = end;
+    }
 }

@@ -4,7 +4,6 @@ package com.order.model;/*
  *@author  ArunSaiSurapaneni
  */
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,7 +14,6 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name="orders")
 public class Order {
@@ -40,5 +38,11 @@ public class Order {
     @Column(name = "ordertotal")
     private double orderTotal;
 
-
+    public Order(LocalDateTime dateTime, Bid bid, String city, String paymentMode, double orderTotal) {
+        this.dateTime = dateTime;
+        this.bid = bid;
+        this.city = city;
+        this.paymentMode = paymentMode;
+        this.orderTotal = orderTotal;
+    }
 }

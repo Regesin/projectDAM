@@ -4,7 +4,6 @@ package com.company.model;/*
  *@author  ArunSaiSurapaneni
  */
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,7 +16,6 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class FarmDetails {
     @Id
     @Column(length = 20, name = "farmid")
@@ -35,4 +33,12 @@ public class FarmDetails {
 
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Set<Produce> produces;
+
+    public FarmDetails(double acres, String soil, String city, int zipcode, Set<Produce> produces) {
+        this.acres = acres;
+        this.soil = soil;
+        this.city = city;
+        this.zipcode = zipcode;
+        this.produces = produces;
+    }
 }

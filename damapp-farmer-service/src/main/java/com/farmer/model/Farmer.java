@@ -4,7 +4,10 @@ package com.farmer.model;/*
  *@author  ArunSaiSurapaneni
  */
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -14,7 +17,6 @@ import java.util.Set;
 @Setter
 @ToString
 @NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "farmers")
 public class Farmer {
 
@@ -37,4 +39,11 @@ public class Farmer {
     @JoinColumn(name="farmer_id")
     private Set<FarmDetails> farmDetails;
 
+    public Farmer(String name, int age, String gender, String mobileNo, Set<FarmDetails> farmDetails) {
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+        this.mobileNo = mobileNo;
+        this.farmDetails = farmDetails;
+    }
 }

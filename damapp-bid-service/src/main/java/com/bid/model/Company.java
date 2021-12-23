@@ -16,7 +16,6 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class Company {
     @Id
     @Column(length = 20, name = "companyid")
@@ -36,7 +35,16 @@ public class Company {
 
     private String mobile;
 
+    @Enumerated(EnumType.STRING)
     private Category category;
 
-
+    public Company(String name, String location, String city, double zipcode, String state, String mobile, Category category) {
+        this.name = name;
+        this.location = location;
+        this.city = city;
+        this.zipcode = zipcode;
+        this.state = state;
+        this.mobile = mobile;
+        this.category = category;
+    }
 }

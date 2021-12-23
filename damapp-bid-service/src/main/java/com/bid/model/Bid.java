@@ -15,7 +15,6 @@ import javax.persistence.*;
 @Table(name="bids")
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 public class Bid {
     @Id
@@ -33,4 +32,9 @@ public class Bid {
     @JoinColumn(name = "produceid")
     private Produce produce;
 
+    public Bid(Company company, double bidPrice, Produce produce) {
+        this.company = company;
+        this.bidPrice = bidPrice;
+        this.produce = produce;
+    }
 }
