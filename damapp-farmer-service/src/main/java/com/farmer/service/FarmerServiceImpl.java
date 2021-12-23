@@ -38,8 +38,6 @@ public class FarmerServiceImpl implements IFarmerService {
     @Override
     public List<Farmer> getAll() {
         List<Farmer> farmers = farmerRepository.findAll();
-        if (farmers.isEmpty())
-            throw new FarmerNotFoundException("No farmers existed");
         return farmers;
     }
 
