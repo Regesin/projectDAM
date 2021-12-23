@@ -32,7 +32,7 @@ public class Farmer {
 
     private String gender;
 
-    @Column(name="mobileno",length=10)
+    @Column(name="mobileno",length=10,unique = true)
     private String mobileNo;
 
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)

@@ -32,6 +32,7 @@ public class Company {
 
     private String state;
 
+    @Column(unique = true)
     private String mobile;
 
     @Enumerated(EnumType.STRING)
