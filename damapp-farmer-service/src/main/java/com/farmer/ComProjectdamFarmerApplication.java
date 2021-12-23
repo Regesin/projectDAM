@@ -3,16 +3,15 @@ package com.farmer;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
-public class ComProjectdamFarmerApplication implements CommandLineRunner {
+@EnableEurekaClient
+public class ComProjectdamFarmerApplication  {
 
     public static void main(String[] args) {
         SpringApplication.run(ComProjectdamFarmerApplication.class, args);
     }
 
-    @Override
-    public void run(String... args) throws Exception {
 
-    }
 }

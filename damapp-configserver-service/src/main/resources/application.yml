@@ -1,0 +1,9 @@
+server:
+  port: 8888
+#  This provides the uri of the central repository
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Regesin/projectdamrepo
