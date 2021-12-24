@@ -6,6 +6,7 @@ package com.farmer.repository;/*
 
 import com.farmer.exceptions.FarmerNotFoundException;
 import com.farmer.model.Farmer;
+import com.farmer.model.Gender;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -16,7 +17,7 @@ import java.util.List;
 public interface IFarmerRepository extends JpaRepository<Farmer, Integer> {
 
 
-    List<Farmer> findByGender(String gender);
+    List<Farmer> findByGender(Gender gender);
 
     List<Farmer> findByAge(int age);
 

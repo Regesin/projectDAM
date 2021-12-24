@@ -32,9 +32,14 @@ public class Bid {
     @JoinColumn(name = "produceid")
     private Produce produce;
 
-    public Bid(Company company, double bidPrice, Produce produce) {
+    @Enumerated(EnumType.STRING)
+    private PaymentMode paymentMode;
+
+
+    public Bid(Company company, double bidPrice, Produce produce, PaymentMode paymentMode) {
         this.company = company;
         this.bidPrice = bidPrice;
         this.produce = produce;
+        this.paymentMode = paymentMode;
     }
 }

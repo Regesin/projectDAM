@@ -6,6 +6,7 @@ package com.farmer.service;/*
 
 import com.farmer.exceptions.FarmerNotFoundException;
 import com.farmer.model.Farmer;
+import com.farmer.model.Gender;
 import com.farmer.repository.IFarmerRepository;
 import org.springframework.stereotype.Service;
 
@@ -65,7 +66,7 @@ public class FarmerServiceImpl implements IFarmerService {
 
     @Override
     public List<Farmer> getByGender(String gender) throws FarmerNotFoundException {
-        List<Farmer> farmers = farmerRepository.findByGender(gender);
+        List<Farmer> farmers = farmerRepository.findByGender(Gender.valueOf(gender));
         if (farmers.isEmpty())
             throw new FarmerNotFoundException();
         return farmers;

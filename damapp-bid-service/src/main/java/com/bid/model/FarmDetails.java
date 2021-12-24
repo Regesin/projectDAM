@@ -32,6 +32,7 @@ public class FarmDetails {
     private  int zipcode;
 
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name="farmid")
     private Set<Produce> produces;
 
     public FarmDetails(double acres, String soil, String city, int zipcode, Set<Produce> produces) {
