@@ -1,0 +1,38 @@
+server:
+  port: 9000
+
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/
+
+#  declarative properties for routes
+#  Each route has an id, uri, predicates (path), filters
+#http://localhost:9000/farmer-api/farmers
+#http://localhost:9000/produce-api/produces
+#http://localhost:9000/company-api/companies
+
+spring:
+  application:
+    name: GATEWAY-SERVICE
+  cloud:
+    gateway:
+      routes:
+        - id: farmerService
+          uri: lb://FARMER-SERVICE
+          predicates:
+            - Path=/farmer-api/**
+        - id: companyService
+          uri: lb://COMPANY-SERVICE
+          predicates:
+            - Path=/company-api/**
+        - id: orderService
+          uri: lb://ORDER-SERVICE
+          predicates:
+            - Path=/order-api/**
+        - id: produceService
+          uri: lb://PRODUCE-SERVICE
+          predicates:
+            - Path=/produce-api/**
+
+

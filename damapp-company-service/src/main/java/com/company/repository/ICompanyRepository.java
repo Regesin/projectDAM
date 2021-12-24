@@ -9,7 +9,9 @@ import java.util.List;
 
 @Repository
 public interface ICompanyRepository extends JpaRepository<Company,Integer> {
+
     public List<Company> findByCity(String city) throws CompanyNotFoundException;
+
     public List<Company> findByCategory(String category) throws CompanyNotFoundException;
 
 }

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="spring-bid" />
+        <module name="com-projectdam-farmer" />
+        <module name="spring-produce" />
+        <module name="spring-eureka-server" />
+        <module name="damapp-gateway-service" />
+        <module name="spring-company" />
+        <module name="spring-order" />
+        <module name="spring-config-server" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="com-projectdam-farmer" target="11" />
+      <module name="damapp-gateway-service" target="11" />
+      <module name="spring-bid" target="11" />
+      <module name="spring-company" target="11" />
+      <module name="spring-config-server" target="11" />
+      <module name="spring-eureka-server" target="11" />
+      <module name="spring-order" target="11" />
+      <module name="spring-produce" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="com-projectdam-farmer" options="-parameters" />
+      <module name="damapp-gateway-service" options="-parameters" />
+      <module name="spring-bid" options="-parameters" />
+      <module name="spring-company" options="-parameters" />
+      <module name="spring-config-server" options="-parameters" />
+      <module name="spring-eureka-server" options="-parameters" />
+      <module name="spring-order" options="-parameters" />
+      <module name="spring-produce" options="-parameters" />
+    </option>
+  </component>
+</project>
