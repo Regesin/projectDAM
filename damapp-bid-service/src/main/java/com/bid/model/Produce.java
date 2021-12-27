@@ -1,20 +1,23 @@
 package com.bid.model;/*
  *@created 22-12-2021/12/2021 - 03:33 PM
  *@project IntelliJ IDEA
- *@author  ArunSaiSurapaneni
+ *@author  DivyasreeBandaru
  */
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 @Table(name="produces")
 @Getter
 @Setter
+@ToString
 @NoArgsConstructor
 public class Produce {
     @Id
@@ -38,18 +41,28 @@ public class Produce {
     @Enumerated(EnumType.STRING)
     private Type type;
 
-    private LocalDateTime start;
+    @Column(name = "startdate")
+    private LocalDate startDate;
 
-    private LocalDateTime end;
+    @Column(name = "enddate")
+    private LocalDate endDate;
 
-    public Produce(String produce, Fertilizer fertilizer, double quintal, double bidPrice, String kind, Type type, LocalDateTime start, LocalDateTime end) {
+    @Column(name = "starttime")
+    private LocalTime startTime;
+
+    @Column(name ="endtime")
+    private LocalTime endTime;
+
+    public Produce(String produce, Fertilizer fertilizer, double quintal, double bidPrice, String kind, Type type, LocalDate startDate, LocalDate endDate, LocalTime startTime, LocalTime endTime) {
         this.produce = produce;
         this.fertilizer = fertilizer;
         this.quintal = quintal;
         this.bidPrice = bidPrice;
         this.kind = kind;
         this.type = type;
-        this.start = start;
-        this.end = end;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.startTime = startTime;
+        this.endTime = endTime;
     }
 }

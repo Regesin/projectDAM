@@ -21,4 +21,14 @@ public interface IProduceService {
 
      List<Produce> getByProduce(String produce) throws ProduceNotFoundException;
 
+     List<Produce> getByType(String type) throws ProduceNotFoundException;
+
+     List<Produce> getByProQuiBid(String produce,double quintal, double bidPrice) throws ProduceNotFoundException;
+
+     List<Produce> getByProFerti(String produce,String fertilizer) throws ProduceNotFoundException;
+
+     List<Produce> getByDateAndTime(String date);
+
+     List<Produce> getByDate(String date);
+
 }
