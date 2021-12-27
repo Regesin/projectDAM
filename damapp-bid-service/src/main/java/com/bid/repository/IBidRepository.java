@@ -18,7 +18,7 @@ import java.util.List;
 public interface IBidRepository extends JpaRepository<Bid, Integer> {
 
     @Query(value = "select * from bids where bidprice = (select max(bidprice) from bids) and produceid = ?1", nativeQuery = true)
-    List<Bid> getWinner(int produceId);
+    Bid getWinner(int produceId);
 
     @Modifying
     @Transactional

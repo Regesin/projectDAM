@@ -8,10 +8,16 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ICompanyRepository extends JpaRepository<Company,Integer> {
+public interface ICompanyRepository extends JpaRepository<Company, Integer> {
 
-    public List<Company> findByCity(String city) throws CompanyNotFoundException;
+    public List<Company> findByCity(String city);
 
-    public List<Company> findByCategory(String category) throws CompanyNotFoundException;
+    public List<Company> findByCategory(String category);
+
+    public List<Company> findByState(String state);
+
+    public List<Company> findByCategoryAndCity(String category, String city);
+
+    public List<Company> findByLocation(String location);
 
 }

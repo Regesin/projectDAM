@@ -7,10 +7,22 @@ import java.util.List;
 
 public interface ICompanyService {
     public Company addCompany(Company company);
+
     public void updateCompany(Company company);
+
     public void deleteCompany(int companyId);
+
     public Company getById(int companyId) throws CompanyNotFoundException;
+
     public List<Company> getAll();
+
     public List<Company> getByCity(String city) throws CompanyNotFoundException;
+
     public List<Company> getByCategory(String category) throws CompanyNotFoundException;
+
+    public List<Company> getByState(String state);
+
+    public List<Company> getByCategoryAndCity(String category, String city);
+
+    public List<Company> getByLocation(String location);
 }

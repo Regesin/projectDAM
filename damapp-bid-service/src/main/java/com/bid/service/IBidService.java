@@ -19,7 +19,9 @@ public interface IBidService {
 
     List<Bid> getAll() throws BidNotFoundException;
 
-    List<Bid> getWinner(int produceId) throws BidNotFoundException;
+    Bid getById(int bidId) throws BidNotFoundException;
+
+    Bid getWinner(int produceId) throws BidNotFoundException;
 
     void addOrder(int produceId) throws BidNotFoundException;
 

@@ -10,6 +10,7 @@ import com.farmer.model.FarmDetails;
 import com.farmer.model.Produce;
 import com.farmer.repository.IFarmDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -22,7 +23,7 @@ public class FarmDetailsServiceImpl implements IFarmDetailsService {
 
     RestTemplate restTemplate;
     @Autowired
-    public void setRestTemplate(RestTemplate restTemplate) {
+    public void setRestTemplate(@Lazy RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
     IFarmDetailsRepository farmDetailsRepository;
@@ -113,7 +114,7 @@ public class FarmDetailsServiceImpl implements IFarmDetailsService {
 
     @Override
     public Produce getByProduceId(int produceId) {
-        String url=BASEURL+"/produces/id"+produceId;
+        String url=BASEURL+"/produces/id/"+produceId;
         ResponseEntity<Produce> produceResponse=restTemplate.getForEntity(url,Produce.class);
         Produce produce=produceResponse.getBody();
         System.out.println(produce);

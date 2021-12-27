@@ -7,9 +7,11 @@ package com.bid.service;/*
 import com.bid.exceptions.BidNotFoundException;
 import com.bid.model.Bid;
 import com.bid.repository.IBidRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class BidServiceImpl implements IBidService{
 
     IBidRepository bidRepository;
@@ -41,7 +43,12 @@ public class BidServiceImpl implements IBidService{
     }
 
     @Override
-    public List<Bid> getWinner(int produceId) throws BidNotFoundException {
+    public Bid getById(int bidId) throws BidNotFoundException {
+        return bidRepository.findById(bidId).get();
+    }
+
+    @Override
+    public Bid getWinner(int produceId) throws BidNotFoundException {
         return bidRepository.getWinner(produceId);
     }
 

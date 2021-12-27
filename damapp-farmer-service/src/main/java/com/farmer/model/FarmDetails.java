@@ -33,7 +33,7 @@ public class FarmDetails {
 
     private  int zipcode;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name="farmid")
     private Set<Produce> produces;
 
