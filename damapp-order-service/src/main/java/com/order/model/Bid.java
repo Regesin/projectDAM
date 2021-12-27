@@ -7,6 +7,7 @@ package com.order.model;/*
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -14,7 +15,7 @@ import javax.persistence.*;
 @Table(name="bids")
 @Getter
 @Setter
-
+@ToString
 @NoArgsConstructor
 public class Bid {
     @Id
@@ -34,7 +35,6 @@ public class Bid {
 
     @Enumerated(EnumType.STRING)
     private PaymentMode paymentMode;
-
 
     public Bid(Company company, double bidPrice, Produce produce, PaymentMode paymentMode) {
         this.company = company;

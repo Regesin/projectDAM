@@ -7,6 +7,7 @@ package com.company.model;/*
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -14,6 +15,7 @@ import javax.persistence.*;
 @Table(name="companies")
 @Getter
 @Setter
+@ToString
 @NoArgsConstructor
 public class Company {
     @Id
@@ -32,7 +34,7 @@ public class Company {
 
     private String state;
 
-    @Column(unique = true,length = 10)
+    @Column(unique = true, length = 10)
     private String mobile;
 
     @Enumerated(EnumType.STRING)
