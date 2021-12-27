@@ -10,8 +10,9 @@
         <module name="spring-bid" />
         <module name="com-projectdam-farmer" />
         <module name="spring-produce" />
-        <module name="spring-eureka-server" />
         <module name="damapp-gateway-service" />
+        <module name="spring-eureka-server" />
+        <module name="spring-gateway-service" />
         <module name="spring-company" />
         <module name="spring-order" />
         <module name="spring-config-server" />
@@ -24,6 +25,7 @@
       <module name="spring-company" target="11" />
       <module name="spring-config-server" target="11" />
       <module name="spring-eureka-server" target="11" />
+      <module name="spring-gateway-service" target="11" />
       <module name="spring-order" target="11" />
       <module name="spring-produce" target="11" />
     </bytecodeTargetLevel>
@@ -36,6 +38,7 @@
       <module name="spring-company" options="-parameters" />
       <module name="spring-config-server" options="-parameters" />
       <module name="spring-eureka-server" options="-parameters" />
+      <module name="spring-gateway-service" options="-parameters" />
       <module name="spring-order" options="-parameters" />
       <module name="spring-produce" options="-parameters" />
     </option>
