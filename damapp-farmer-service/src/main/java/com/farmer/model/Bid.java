@@ -7,6 +7,7 @@ package com.farmer.model;/*
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -14,7 +15,7 @@ import javax.persistence.*;
 @Table(name="bids")
 @Getter
 @Setter
-
+@ToString
 @NoArgsConstructor
 public class Bid {
     @Id

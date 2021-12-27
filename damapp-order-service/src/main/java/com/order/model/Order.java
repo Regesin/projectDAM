@@ -7,6 +7,7 @@ package com.order.model;/*
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -14,14 +15,12 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
-
+@ToString
 @Entity
 @Table(name="orders")
 public class Order {
     @Id
     @Column(length = 20, name = "ordersid")
-    @GeneratedValue(generator = "order_seq", strategy = GenerationType.AUTO)
-    @SequenceGenerator(name = "order_seq", sequenceName = "order_sequence", initialValue = 1, allocationSize = 1)
     private Integer orderId;
 
     @Column(name = "datetime", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
@@ -31,16 +30,12 @@ public class Order {
     @JoinColumn(name = "bidid")
     private Bid bid;
 
-    @Column(name = "paymentmode")
-    private String paymentMode;
-
     @Column(name = "ordertotal")
     private double orderTotal;
 
-    public Order(LocalDateTime dateTime, Bid bid, String paymentMode, double orderTotal) {
+    public Order(LocalDateTime dateTime, Bid bid, double orderTotal) {
         this.dateTime = dateTime;
         this.bid = bid;
-        this.paymentMode = paymentMode;
         this.orderTotal = orderTotal;
     }
 }

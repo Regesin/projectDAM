@@ -7,15 +7,24 @@ package com.farmer.service;/*
 import com.farmer.exceptions.FarmNotFoundException;
 import com.farmer.exceptions.FarmerNotFoundException;
 import com.farmer.model.FarmDetails;
+import com.farmer.model.Produce;
 import com.farmer.repository.IFarmDetailsRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
 @Service
 public class FarmDetailsServiceImpl implements IFarmDetailsService {
+    public  static  final String BASEURL="http://PRODUCE-SERVICE/produce-api";
 
-
+    RestTemplate restTemplate;
+    @Autowired
+    public void setRestTemplate(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
     IFarmDetailsRepository farmDetailsRepository;
 
     public FarmDetailsServiceImpl(IFarmDetailsRepository farmDetailsRepository) {
@@ -101,4 +110,15 @@ public class FarmDetailsServiceImpl implements IFarmDetailsService {
             throw new FarmNotFoundException("Zipcode and Soil Not Found Together");
         return farmDetails;
     }
+
+    @Override
+    public Produce getByProduceId(int produceId) {
+        String url=BASEURL+"/produces/id"+produceId;
+        ResponseEntity<Produce> produceResponse=restTemplate.getForEntity(url,Produce.class);
+        Produce produce=produceResponse.getBody();
+        System.out.println(produce);
+        return produce;
+    }
+
+
 }

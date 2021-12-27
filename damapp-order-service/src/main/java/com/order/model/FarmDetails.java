@@ -7,6 +7,7 @@ package com.order.model;/*
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -15,6 +16,7 @@ import java.util.Set;
 @Table(name="farmdetails")
 @Getter
 @Setter
+@ToString
 @NoArgsConstructor
 public class FarmDetails {
     @Id

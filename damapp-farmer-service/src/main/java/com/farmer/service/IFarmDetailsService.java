@@ -7,6 +7,7 @@ package com.farmer.service;/*
 import com.farmer.exceptions.FarmNotFoundException;
 import com.farmer.exceptions.FarmerNotFoundException;
 import com.farmer.model.FarmDetails;
+import com.farmer.model.Produce;
 
 import java.util.List;
 
@@ -35,5 +36,6 @@ public interface IFarmDetailsService {
 
     List<FarmDetails> getByZipcodeSoil(String zipcode, String soil) throws FarmNotFoundException;
 
+    Produce getByProduceId(int produceId);
 
 }

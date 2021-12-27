@@ -7,6 +7,7 @@ package com.produce.model;/*
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -14,14 +15,12 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
-
+@ToString
 @Entity
 @Table(name="orders")
 public class Order {
     @Id
     @Column(length = 20, name = "ordersid")
-    @GeneratedValue(generator = "order_seq", strategy = GenerationType.AUTO)
-    @SequenceGenerator(name = "order_seq", sequenceName = "order_sequence", initialValue = 1, allocationSize = 1)
     private Integer orderId;
 
     @Column(name = "datetime", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
