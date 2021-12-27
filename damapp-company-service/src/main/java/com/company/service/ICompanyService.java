@@ -2,6 +2,7 @@ package com.company.service;
 
 import com.company.exceptions.CompanyNotFoundException;
 import com.company.model.Company;
+import com.company.model.Order;
 
 import java.util.List;
 
@@ -25,4 +26,5 @@ public interface ICompanyService {
     public List<Company> getByCategoryAndCity(String category, String city);
 
     public List<Company> getByLocation(String location);
+    public List<Order> getByCompanyId(int companyId);
 }

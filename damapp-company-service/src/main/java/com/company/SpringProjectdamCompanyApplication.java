@@ -6,11 +6,21 @@ import com.company.service.ICompanyService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @EnableEurekaClient
+
 public class SpringProjectdamCompanyApplication implements CommandLineRunner {
+
+    @Bean
+    @LoadBalanced
+    public RestTemplate restTemplate(){
+        return new  RestTemplate();
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(SpringProjectdamCompanyApplication.class, args);
@@ -28,7 +38,7 @@ public class SpringProjectdamCompanyApplication implements CommandLineRunner {
         Company company2= new Company("Mandi Rates","Amara Muzik","Chennai",653456,"Tamil Nadu","9872423765", Category.FRUITSELLER);
         Company company3= new Company("Deemart","Madhapoor","Hyderabad",123456,"Telangana","9873437534", Category.CLOTHING);
         Company company4= new Company("BroCode","Ameertpet","Hyderabad",123264,"Telangana","9872267534", Category.CLOTHING);
-//
+
 //        companyService.addCompany(company);
 //       companyService.addCompany(company1);
 //        companyService.addCompany(company2);

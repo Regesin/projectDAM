@@ -1,7 +1,6 @@
 package com.company.controllers;
 
 import com.company.model.*;
-import com.company.service.ICompanyFeignService;
 import com.company.service.ICompanyService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,15 +23,6 @@ public class CompanyController {
     public void setCompanyService(ICompanyService companyService) {
         this.companyService = companyService;
     }
-
-    @Autowired
-    public void setCompanyFeignService(ICompanyFeignService companyFeignService) {
-        this.companyFeignService = companyFeignService;
-    }
-
-    ICompanyFeignService companyFeignService;
-
-
 
     @PostMapping("/companies/add-company")
     public ResponseEntity<Company> addCompany(@RequestBody Company company) {
@@ -152,9 +142,13 @@ public class CompanyController {
         HttpHeaders headers = new HttpHeaders();
         headers.add("desc", "Getting Orders details");
         headers.add("info", "Getting Orders details");
-        List<Order> orders = companyFeignService.getAllOrder(companyId);
+        List<Order> orders = companyService.getByCompanyId(companyId);
         logger.info("All" + orders);
         ResponseEntity<List<Order>> orderResponse = new ResponseEntity(orders, headers, HttpStatus.OK);
         return orderResponse;
     }
+
+
+
+
 }

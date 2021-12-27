@@ -20,16 +20,18 @@ import javax.persistence.*;
 public class Bid {
     @Id
     @Column(name="bidid")
+    @GeneratedValue(generator = "bid_seq", strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "bid_seq", sequenceName = "bid_sequence", initialValue = 1, allocationSize = 1)
     private  Integer bidId;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "companyid")
     private Company company;
 
     @Column(name="bidprice")
     private double bidPrice;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "produceid")
     private Produce produce;
 

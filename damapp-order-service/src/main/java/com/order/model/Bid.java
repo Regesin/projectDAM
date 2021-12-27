@@ -20,6 +20,8 @@ import javax.persistence.*;
 public class Bid {
     @Id
     @Column(name="bidid")
+    @GeneratedValue(generator = "bid_seq", strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "bid_seq", sequenceName = "bid_sequence", initialValue = 1, allocationSize = 1)
     private  Integer bidId;
 
     @OneToOne(cascade = CascadeType.ALL)

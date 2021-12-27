@@ -6,6 +6,8 @@ package com.bid.service;/*
 
 import com.bid.exceptions.BidNotFoundException;
 import com.bid.model.Bid;
+import com.bid.model.Company;
+import com.bid.model.Produce;
 
 import java.util.List;
 
@@ -24,5 +26,9 @@ public interface IBidService {
     Bid getWinner(int produceId) throws BidNotFoundException;
 
     void addOrder(int produceId) throws BidNotFoundException;
+
+    Produce getByProduceId(int produceId);
+
+    Company getByCompanyId(int companyId);
 
 }

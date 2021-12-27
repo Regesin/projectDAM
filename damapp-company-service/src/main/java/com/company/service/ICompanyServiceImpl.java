@@ -2,22 +2,29 @@ package com.company.service;
 
 import com.company.exceptions.CompanyNotFoundException;
 import com.company.model.Company;
+
 import com.company.model.Order;
 import com.company.repository.ICompanyRepository;
+import org.aspectj.weaver.ast.Or;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
 @Service
-public class ICompanyServiceImpl implements ICompanyService, ICompanyFeignService {
+public class ICompanyServiceImpl implements ICompanyService {
+
+    public  static final String BASEURL="http://ORDER-SERVICE/order-api";
+    RestTemplate restTemplate;
+    @Autowired
+    public void setRestTemplate(@Lazy RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
     ICompanyRepository companyRepository;
-
-    ICompanyFeignService companyFeignService;
-
-    public ICompanyServiceImpl(ICompanyRepository companyRepository) {
-        this.companyRepository = companyRepository;
-    }
 
     @Override
     public Company addCompany(Company company) {
@@ -90,7 +97,12 @@ public class ICompanyServiceImpl implements ICompanyService, ICompanyFeignServic
     }
 
     @Override
-    public List<Order> getAllOrder(int companyId) {
-        return companyFeignService.getAllOrder(companyId);
+    public List<Order> getByCompanyId(int companyId) {
+        String url=BASEURL+"/order/companyId/"+companyId;
+       List<Order> orders=restTemplate.getForObject(url,List.class);
+        System.out.println(orders);
+        return orders;
     }
+
+
 }

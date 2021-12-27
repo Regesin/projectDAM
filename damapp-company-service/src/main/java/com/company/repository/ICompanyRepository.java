@@ -1,6 +1,5 @@
 package com.company.repository;
 
-import com.company.exceptions.CompanyNotFoundException;
 import com.company.model.Company;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -19,5 +18,6 @@ public interface ICompanyRepository extends JpaRepository<Company, Integer> {
     public List<Company> findByCategoryAndCity(String category, String city);
 
     public List<Company> findByLocation(String location);
+
 
 }

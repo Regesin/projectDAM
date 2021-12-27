@@ -66,12 +66,12 @@ public class SpringFarmerApplication implements CommandLineRunner{
         Set farmDetailsSet2=new HashSet<>(Arrays.asList(farmDetails2));
 
 
-        Farmer farmer1=new Farmer("Mallika",20,Gender.F,"8976521987",farmDetailsSet1);
+        Farmer farmer1=new Farmer("Mallika",20,Gender.F,"8676521987",farmDetailsSet1);
         Farmer farmer2=new Farmer("Divya",20,Gender.F,"8976421987",farmDetailsSet2);
 
-        farmerService.addFarmer(farmer1);
-        farmerService.addFarmer(farmer2);
-       
+//        farmerService.addFarmer(farmer1);
+//        farmerService.addFarmer(farmer2);
+
 
 
     }
