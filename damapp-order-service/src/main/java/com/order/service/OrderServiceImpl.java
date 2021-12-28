@@ -13,6 +13,9 @@ import java.util.List;
 
 @Service
 public class OrderServiceImpl implements IOrderService{
+    /**
+     * calling the IOrderRepository in the OrderServiceImpl
+     */
 
     IOrderRepository orderRepository;
 
@@ -20,15 +23,35 @@ public class OrderServiceImpl implements IOrderService{
         this.orderRepository = orderRepository;
     }
 
+    /**
+     *
+     * @param orderId getting the Id
+     * @return
+     * @throws OrderNotFoundException throws exception
+     */
+
     @Override
     public Order getById(int orderId) throws OrderNotFoundException {
         return orderRepository.findById(orderId).get();
     }
 
+    /**
+     *
+     * @return
+     * @throws OrderNotFoundException
+     */
+
     @Override
     public List<Order> getAll() throws OrderNotFoundException {
         return orderRepository.findAll();
     }
+
+    /**
+     *
+     * @param companyId Getting the companyId
+     * @return
+     * @throws OrderNotFoundException throws an exception
+     */
 
     @Override
     public List<Order> getByCompanyId(int companyId) throws OrderNotFoundException {

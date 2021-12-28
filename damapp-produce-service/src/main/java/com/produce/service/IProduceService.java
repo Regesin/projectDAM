@@ -6,6 +6,11 @@ import com.produce.model.Produce;
 import java.util.List;
 
 public interface IProduceService {
+     /**
+      *
+      * @param produce
+      * @throws ProduceNotFoundException
+      */
 
      void addProduce(Produce produce) throws ProduceNotFoundException;
 
@@ -26,8 +31,6 @@ public interface IProduceService {
      List<Produce> getByProQuiBid(String produce,double quintal, double bidPrice) throws ProduceNotFoundException;
 
      List<Produce> getByProFerti(String produce,String fertilizer) throws ProduceNotFoundException;
-
-     List<Produce> getByDateAndTime(String date);
 
      List<Produce> getByDate(String date);
 

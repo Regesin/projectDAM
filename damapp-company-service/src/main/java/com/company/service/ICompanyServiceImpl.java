@@ -23,11 +23,11 @@ public class ICompanyServiceImpl implements ICompanyService {
     }
 
     ICompanyRepository companyRepository;
-
     @Autowired
     public void setCompanyRepository(ICompanyRepository companyRepository) {
         this.companyRepository = companyRepository;
     }
+
     /**
      *
      * @param company --> adding company object to the database

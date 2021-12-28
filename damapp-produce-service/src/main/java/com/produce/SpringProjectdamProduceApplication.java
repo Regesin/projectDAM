@@ -32,24 +32,21 @@ public class SpringProjectdamProduceApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
        Produce produce1=new Produce("Grapes",Fertilizer.ORGANIC,20,200000,"Sweet Jubliee",Type.NORMAl, LocalDate.parse("2021-12-28"),LocalDate.parse("2021-12-28"), LocalTime.parse("18:00"),LocalTime.parse("19:00"));
-
-        Produce produce2=new Produce("Tomatoes",Fertilizer.ORGANIC,30,250000,"Roma",Type.NORMAl, LocalDate.parse("2021-12-29"),LocalDate.parse("2021-12-29"), LocalTime.parse("20:00"),LocalTime.parse("21:00"));
-  //   Produce produce1=new Produce("Grapes",Fertilizer.ORGANIC,20,200000,"Sweet Jubliee",Type.NORMAl, LocalDate.parse("2021-12-28"),LocalDate.parse("2021-12-28"), LocalTime.parse("18:00"),LocalTime.parse("19:00"));
-//
-//        Produce produce1=new Produce("Grapes",Fertilizer.ORGANIC,20,200000,"Sweet Jubliee",Type.NORMAl, LocalDate.parse("2021-12-28"),LocalDate.parse("2021-12-28"), LocalTime.parse("18:00"),LocalTime.parse("19:00"));
-//        Produce produce1=new Produce("Grapes",Fertilizer.ORGANIC,20,200000,"Sweet Jubliee",Type.NORMAl, LocalDate.parse("2021-12-28"),LocalDate.parse("2021-12-28"), LocalTime.parse("18:00"),LocalTime.parse("19:00"));
+       Produce produce2=new Produce("Tomatoes",Fertilizer.ORGANIC,30,250000,"Roma",Type.NORMAl, LocalDate.parse("2021-12-29"),LocalDate.parse("2021-12-29"), LocalTime.parse("20:00"),LocalTime.parse("21:00"));
+       Produce produce3=new Produce("Onions",Fertilizer.INORGANIC,40,300000,"White Onion",Type.NORMAl, LocalDate.parse("2021-12-30"),LocalDate.parse("2021-12-30"), LocalTime.parse("10:00"),LocalTime.parse("11:00"));
+       Produce produce4=new Produce("Carrot",Fertilizer.ORGANIC,50,350000,"Napoli",Type.NORMAl, LocalDate.parse("2021-12-31"),LocalDate.parse("2021-12-31"), LocalTime.parse("12:00"),LocalTime.parse("01:00"));
+        //Produce produce1=new Produce("Grapes",Fertilizer.ORGANIC,20,200000,"Sweet Jubliee",Type.NORMAl, LocalDate.parse("2021-12-28"),LocalDate.parse("2021-12-28"), LocalTime.parse("18:00"),LocalTime.parse("19:00"));
 
 
-
-        produceService.addProduce(produce1);
-
-        produceService.addProduce(produce2);
 
 //        produceService.addProduce(produce1);
 //
-//        produceService.addProduce(produce1);
+//        produceService.addProduce(produce2);
 //
-//        produceService.addProduce(produce1);
+//       produceService.addProduce(produce3);
+//
+//        produceService.addProduce(produce4);
+
 
     }
 }

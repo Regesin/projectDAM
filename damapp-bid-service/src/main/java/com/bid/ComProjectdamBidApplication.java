@@ -53,8 +53,8 @@ public class ComProjectdamBidApplication implements CommandLineRunner {
 //
 //        bidService.addBid(bid3);
 //
-//        bidService.addBid(bid4);
-
-        bidService.addOrder(1);
+//       bidService.addBid(bid4);
+//
+//        bidService.addOrder(1);
     }
 }

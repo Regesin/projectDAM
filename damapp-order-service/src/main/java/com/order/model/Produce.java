@@ -53,6 +53,19 @@ public class Produce {
     @Column(name ="endtime")
     private LocalTime endTime;
 
+    /**
+     *
+     * @param produce
+     * @param fertilizer
+     * @param quintal
+     * @param bidPrice
+     * @param kind
+     * @param type
+     * @param startDate
+     * @param endDate
+     * @param startTime
+     * @param endTime
+     */
     public Produce(String produce, Fertilizer fertilizer, double quintal, double bidPrice, String kind, Type type, LocalDate startDate, LocalDate endDate, LocalTime startTime, LocalTime endTime) {
         this.produce = produce;
         this.fertilizer = fertilizer;

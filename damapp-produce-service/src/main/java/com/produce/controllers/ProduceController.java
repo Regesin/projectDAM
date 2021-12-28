@@ -80,10 +80,12 @@ public class ProduceController {
     }
     @GetMapping("/produces/produce/{produce}")
     public ResponseEntity<List<Produce>> getByProduce(@PathVariable("produce") String produce){
+        logger.debug("get produce");
         HttpHeaders headers=new HttpHeaders();
         headers.add("desc","Getting produce details");
         headers.add("info","Getting produce details");
         List<Produce> produces=produceService.getByProduce(produce);
+        logger.info("got produce"+produces);
         ResponseEntity<List<Produce>> produceResponse=new ResponseEntity(produces,headers,HttpStatus.OK);
         return produceResponse;
     }
@@ -130,7 +132,7 @@ public class ProduceController {
         HttpHeaders headers=new HttpHeaders();
         headers.add("desc","Getting produce date");
         headers.add("info","Getting produce date");
-        List<Produce> produces=produceService.getByDateAndTime(date);
+        List<Produce> produces=produceService.getByDate(date);
         logger.info("Date"+produces);
         ResponseEntity<List<Produce>> produceResponse=new ResponseEntity(produces,headers,HttpStatus.OK);
         return produces;

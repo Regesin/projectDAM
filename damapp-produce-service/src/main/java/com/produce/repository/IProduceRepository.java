@@ -28,9 +28,6 @@ public interface IProduceRepository extends JpaRepository<Produce,Integer>{
     @Query("from Produce p where p.produce=?1 and p.fertilizer<=?2 ")
     List<Produce> findByProFerti(String produce, Fertilizer fertilizer) throws ProduceNotFoundException;
 
-//    @Query("from Produce p where p.startDate=?1")
-//    List<Produce> getByDateTime(LocalDateTime date);
-//
     @Query("from Produce p where p.startDate=?1")
     List<Produce> findByDate(LocalDate date);
 
