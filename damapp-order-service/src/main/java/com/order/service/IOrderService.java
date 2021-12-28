@@ -5,6 +5,7 @@ package com.order.service;/*
  */
 
 import com.order.exceptions.OrderNotFoundException;
+import com.order.model.FarmerOrderView;
 import com.order.model.Order;
 import org.aspectj.weaver.ast.Or;
 
@@ -18,6 +19,6 @@ public interface IOrderService {
 
     List<Order> getByCompanyId(int companyId) throws OrderNotFoundException;
 
-    List<Object> getByFarmerId(int farmerId);
+    List<FarmerOrderView> getByFarmerId(int farmerId);
 
 }

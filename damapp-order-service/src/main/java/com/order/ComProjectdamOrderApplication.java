@@ -24,6 +24,7 @@ public class ComProjectdamOrderApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        orderService.getByFarmerId(4).forEach(System.out::println);
+//        orderService.getByFarmerId(4).forEach(System.out::println);
+//        orderService.getByFarmerId(1).forEach();
     }
 }

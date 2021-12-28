@@ -4,6 +4,7 @@ package com.order.controller;/*
  *@author  ArunSaiSurapaneni
  */
 
+import com.order.model.FarmerOrderView;
 import com.order.model.Order;
 import com.order.service.IOrderService;
 import org.slf4j.Logger;
@@ -64,14 +65,14 @@ public class orderController {
     }
 
     @GetMapping("/orders/farmers/id/{farmerId}")
-    public ResponseEntity<List<Object>> getByFarmerId(@PathVariable("farmerId") int farmerId){
+    public ResponseEntity<List<FarmerOrderView>> getByFarmerId(@PathVariable("farmerId") int farmerId){
         logger.debug("Get All Order");
         HttpHeaders headers = new HttpHeaders();
         headers.add("desc", "Getting Orders details");
         headers.add("info", "Getting Orders details");
-        List<Object> objects = orderService.getByFarmerId(farmerId);
+        List<FarmerOrderView> objects = orderService.getByFarmerId(farmerId);
         logger.info("All" + objects);
-        ResponseEntity<List<Object>> objectResponse = new ResponseEntity(objects, headers, HttpStatus.OK);
+        ResponseEntity<List<FarmerOrderView>> objectResponse = new ResponseEntity(objects, headers, HttpStatus.OK);
         return objectResponse;
     }
 

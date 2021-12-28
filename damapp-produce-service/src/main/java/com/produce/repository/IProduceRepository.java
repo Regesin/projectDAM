@@ -7,18 +7,15 @@ import com.produce.model.Type;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
+
 @Repository
 public interface IProduceRepository extends JpaRepository<Produce,Integer>{
-
 
     List<Produce> findByKind(String kind) throws ProduceNotFoundException;
 
     List<Produce> findByProduce(String produce) throws ProduceNotFoundException;
-
 
     List<Produce> findByType(Type type) throws ProduceNotFoundException;
 
@@ -30,8 +27,4 @@ public interface IProduceRepository extends JpaRepository<Produce,Integer>{
 
     @Query("from Produce p where p.startDate=?1")
     List<Produce> findByDate(LocalDate date);
-
-
-
-
 }

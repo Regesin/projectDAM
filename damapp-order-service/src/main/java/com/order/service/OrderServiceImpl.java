@@ -5,6 +5,7 @@ package com.order.service;/*
  */
 
 import com.order.exceptions.OrderNotFoundException;
+import com.order.model.FarmerOrderView;
 import com.order.model.Order;
 import com.order.repository.IOrderRepository;
 import org.springframework.stereotype.Service;
@@ -59,7 +60,7 @@ public class OrderServiceImpl implements IOrderService{
     }
 
     @Override
-    public List<Object> getByFarmerId(int farmerId) {
+    public List<FarmerOrderView> getByFarmerId(int farmerId) {
         return  orderRepository.getByFarmerId(farmerId);
     }
 

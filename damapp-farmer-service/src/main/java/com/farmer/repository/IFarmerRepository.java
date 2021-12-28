@@ -4,7 +4,6 @@ package com.farmer.repository;/*
  *@author  ArunSaiSurapaneni
  */
 
-import com.farmer.exceptions.FarmerNotFoundException;
 import com.farmer.model.Farmer;
 import com.farmer.model.Gender;
 import org.springframework.data.jpa.repository.JpaRepository;
