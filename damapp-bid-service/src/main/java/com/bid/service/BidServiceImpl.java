@@ -30,7 +30,8 @@ public class BidServiceImpl implements IBidService{
 
     IBidRepository bidRepository;
 
-    public BidServiceImpl(IBidRepository bidRepository) {
+    @Autowired
+    public void setBidRepository(IBidRepository bidRepository) {
         this.bidRepository = bidRepository;
     }
 

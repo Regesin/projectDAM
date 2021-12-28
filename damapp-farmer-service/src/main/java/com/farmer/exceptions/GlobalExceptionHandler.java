@@ -20,11 +20,11 @@ import java.time.LocalDateTime;
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @Override
     protected ResponseEntity<Object> handleHttpRequestMethodNotSupported(HttpRequestMethodNotSupportedException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-        String message = ex.getMessage();
-        headers.add("desc", "method not allowed");
-        String path = request.getContextPath();
-        ApiErrors errors = new ApiErrors(LocalDateTime.now(), status, message, path);
-        return ResponseEntity.status(status).headers(headers).body(errors);
+            String message = ex.getMessage();
+            headers.add("desc", "method not allowed");
+            String path = request.getContextPath();
+            ApiErrors errors = new ApiErrors(LocalDateTime.now(), status, message, path);
+            return ResponseEntity.status(status).headers(headers).body(errors);
     }
 
     @Override
@@ -64,27 +64,24 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         ApiErrors errors = new ApiErrors(LocalDateTime.now(), status, message, path);
         return ResponseEntity.status(status).headers(headers).body(errors);
     }
-
     @ExceptionHandler(value = FarmerNotFoundException.class)
-    public ResponseEntity<Object> handlePropertyNotFound(FarmerNotFoundException ex) {
-        String message = ex.getMessage();
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("desc", "Farmer not found");
-        String path = "";
-        ApiErrors errors = new ApiErrors(LocalDateTime.now(), HttpStatus.NOT_FOUND, message, path);
+    public ResponseEntity<Object> handleFarmerNotFound(FarmerNotFoundException ex){
+        String message=ex.getMessage();
+        HttpHeaders headers=new HttpHeaders();
+        headers.add("desc","Farmer not found");
+        String path="";
+        ApiErrors errors=new ApiErrors(LocalDateTime.now(),HttpStatus.NOT_FOUND,message,path);
         return ResponseEntity.status(HttpStatus.NOT_FOUND).headers(headers).body(errors);
-
     }
-
     @ExceptionHandler(value = FarmNotFoundException.class)
-    public ResponseEntity<Object> handlePropertyNotFound(FarmNotFoundException ex) {
-        String message = ex.getMessage();
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("desc", "Farm not found");
-        String path = "";
-        ApiErrors errors = new ApiErrors(LocalDateTime.now(), HttpStatus.NOT_FOUND, message, path);
+    public ResponseEntity<Object> handleFarmNotFound(FarmNotFoundException ex){
+        String message=ex.getMessage();
+        HttpHeaders headers=new HttpHeaders();
+        headers.add("desc","Farm not found");
+        String path="";
+        ApiErrors errors=new ApiErrors(LocalDateTime.now(),HttpStatus.NOT_FOUND,message,path);
         return ResponseEntity.status(HttpStatus.NOT_FOUND).headers(headers).body(errors);
 
-
     }
+
 }

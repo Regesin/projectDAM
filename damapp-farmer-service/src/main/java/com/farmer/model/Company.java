@@ -38,6 +38,16 @@ public class Company {
     @Enumerated(EnumType.STRING)
     private Category category;
 
+    /**
+     *
+     * @param name
+     * @param location
+     * @param city
+     * @param zipcode
+     * @param state
+     * @param mobile
+     * @param category
+     */
     public Company(String name, String location, String city, double zipcode, String state, String mobile, Category category) {
         this.name = name;
         this.location = location;

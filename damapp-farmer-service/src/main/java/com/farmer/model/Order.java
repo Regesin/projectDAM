@@ -40,6 +40,12 @@ public class Order {
      * @param orderTotal
      */
 
+    /**
+     *
+     * @param dateTime
+     * @param bid
+     * @param orderTotal
+     */
     public Order(LocalDateTime dateTime, Bid bid, double orderTotal) {
         this.dateTime = dateTime;
         this.bid = bid;

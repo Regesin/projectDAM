@@ -50,7 +50,7 @@ public class BidController {
     }
 
     @DeleteMapping("/bids/bidId/{bidId}")
-    public ResponseEntity<Void> deleteBid(@PathVariable("bidId") int bidId) {
+    public ResponseEntity<Void> deleteByid(@PathVariable("bidId") int bidId) {
         logger.debug("delete a Bid method");
         HttpHeaders headers = new HttpHeaders();
         headers.add("desc", "deleting Bid");

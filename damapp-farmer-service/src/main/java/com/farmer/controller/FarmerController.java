@@ -28,121 +28,165 @@ public class FarmerController {
 
     private final Logger logger = LoggerFactory.getLogger(FarmerController.class);
 
+    /**
+     *
+     * @param farmer
+     * @return
+     */
     @PostMapping("/farmers")
-    ResponseEntity <String>addFarmer(@RequestBody Farmer farmer){
-        logger.debug("added farmer");
+    public ResponseEntity<String> addFarmer(@RequestBody Farmer farmer){
+        logger.debug("inside add Farmer method");
         HttpHeaders headers = new HttpHeaders();
-        headers.add("desc", "Adding a Farmer");
+        headers.add("desc", "adding farmer");
         farmerService.addFarmer(farmer);
         logger.info("Farmer Added");
-        return ResponseEntity.status(HttpStatus.CREATED).body("added");
+        return ResponseEntity.status(HttpStatus.CREATED).body("Added");
     }
 
+    /**
+     *
+     * @param farmer
+     * @return
+     */
     @PutMapping("/farmers")
-    ResponseEntity <String>updateFarmer(@RequestBody Farmer farmer) {
-        logger.debug("updated farmer");
+    public ResponseEntity<Void> updateFarmer(@RequestBody Farmer farmer) {
+        logger.debug("inside updated a Farmer method");
         HttpHeaders headers = new HttpHeaders();
-        headers.add("desc", "Updating a Farmer");
+        headers.add("desc", "updating Farmer");
         farmerService.updateFarmer(farmer);
-        logger.info("updated");
-        return ResponseEntity.status(HttpStatus.ACCEPTED).headers(headers).build();
+        logger.info("Farmer updated");
+        return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }
 
+    /**
+     *
+     * @param farmerId
+     * @return
+     */
     @DeleteMapping("/farmers/{farmerId}")
-    ResponseEntity <Void> deleteFarmer(@PathVariable("farmerId") int farmerId) {
-        logger.debug("delete farmer");
+    public ResponseEntity<Void> deleteFarmer(@PathVariable("farmerId") int farmerId) {
+        logger.debug("delete a Farmer method");
         HttpHeaders headers = new HttpHeaders();
-        headers.add("desc", "Deleting a Farmer");
+        headers.add("desc", "deleting Farmer");
         farmerService.deleteFarmer(farmerId);
-        logger.info("deleted");
-        return ResponseEntity.status(HttpStatus.ACCEPTED).headers(headers).build();
+        logger.info("Farmer deleted");
+        return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }
 
+    /**
+     *
+     * @return
+     */
     @GetMapping("/farmers")
-    ResponseEntity<List<Farmer>> getAll(){
-        logger.debug("get all");
+    public ResponseEntity<List<Farmer>> getAll(){
+        logger.debug("Get All");
         HttpHeaders headers = new HttpHeaders();
-        headers.add("desc", "Getting all Farmers");
+        headers.add("desc", "Getting Farmer details");
+        headers.add("info", "Getting Farmer details");
         List<Farmer> farmers = farmerService.getAll();
-        ResponseEntity<List<Farmer>> farmerResponse = new ResponseEntity<>(farmers, headers, HttpStatus.OK);
-        logger.info("all"+farmers);
+        logger.info("All" + farmers);
+        ResponseEntity<List<Farmer>> farmerResponse = new ResponseEntity(farmers, headers, HttpStatus.OK);
         return farmerResponse;
     }
 
+    /**
+     *
+     * @param farmerId
+     * @return
+     */
     @GetMapping("/farmers/id/{farmerId}")
-    ResponseEntity<List<Farmer>> getById(@PathVariable("farmerId") int farmerId) {
-        logger.debug("farmer id");
+    public ResponseEntity<Farmer> getById(@PathVariable("farmerId") int farmerId) {
+        logger.debug("Id method");
         HttpHeaders headers = new HttpHeaders();
-        headers.add("desc", "Getting a Farmer By Id");
+        headers.add("desc", "Getting By Farmer id");
         Farmer farmer = farmerService.getById(farmerId);
-        logger.info("got one"+farmer);
-        return (ResponseEntity<List<Farmer>>) new ResponseEntity(farmer, headers, HttpStatus.OK);
-    }
+        logger.info("bidId" + farmer);
+        return ResponseEntity.ok().headers(headers).body(farmer);    }
 
+    /**
+     *
+     * @param name
+     * @return
+     */
     @GetMapping("/farmers/name/{name}")
-    ResponseEntity<List<Farmer>> getByName(@PathVariable("name") String name) {
-        logger.debug("farmer name");
+    public ResponseEntity<List<Farmer>> getByName(@PathVariable("name") String name) {
+        logger.debug("Get By Name");
         HttpHeaders headers = new HttpHeaders();
-        headers.add("desc", "Getting Farmers names");
+        headers.add("desc", "Getting Farmer details");
+        headers.add("info", "Getting Farmer details");
         List<Farmer> farmers = farmerService.getByName(name);
-        logger.info("got farmer name"+farmers);
-        ResponseEntity<List<Farmer>> farmerResponse = new ResponseEntity(farmers, HttpStatus.OK);
+        logger.info("All" + farmers);
+        ResponseEntity<List<Farmer>> farmerResponse = new ResponseEntity(farmers, headers, HttpStatus.OK);
         return farmerResponse;
     }
 
+    /**
+     *
+     * @param mobileNo
+     * @return
+     */
     @GetMapping("/farmers/mobileNo/{mobileNo}")
-    ResponseEntity<List<Farmer>> getByMobile(@PathVariable("mobileNo") String mobileNo) {
-        logger.debug("mobile number");
+    public ResponseEntity<List<Farmer>> getByMobile(@PathVariable("mobileNo") String mobileNo) {
+        logger.debug("Get By MobileNo");
         HttpHeaders headers = new HttpHeaders();
-        headers.add("desc", "Getting Farmers Mobile Number");
+        headers.add("desc", "Getting Farmer details");
+        headers.add("info", "Getting Farmer details");
         List<Farmer> farmers = farmerService.getByMobile(mobileNo);
-        logger.info("got mobile number"+farmers);
-        ResponseEntity<List<Farmer>> farmerResponse = new ResponseEntity(farmers, HttpStatus.OK);
+        logger.info("All" + farmers);
+        ResponseEntity<List<Farmer>> farmerResponse = new ResponseEntity(farmers, headers, HttpStatus.OK);
         return farmerResponse;
     }
 
+    /**
+     *
+     * @param gender
+     * @return
+     */
     @GetMapping("/farmers/gender/{gender}")
     ResponseEntity<List<Farmer>> getByGender(@PathVariable("gender") String gender) {
-        logger.debug("Gender");
+        logger.debug("Get By Gender");
         HttpHeaders headers = new HttpHeaders();
-        headers.add("desc", "Getting Farmers by Gender");
+        headers.add("desc", "Getting Farmer details");
+        headers.add("info", "Getting Farmer details");
         List<Farmer> farmers = farmerService.getByGender(gender);
-        logger.info("got gender"+farmers);
-        ResponseEntity<List<Farmer>> farmerResponse = new ResponseEntity(farmers, HttpStatus.OK);
+        logger.info("All" + farmers);
+        ResponseEntity<List<Farmer>> farmerResponse = new ResponseEntity(farmers, headers, HttpStatus.OK);
         return farmerResponse;
     }
 
+    /**
+     *
+     * @param age
+     * @return
+     */
     @GetMapping("/farmers/age/{age}")
     ResponseEntity<List<Farmer>> getByAge(@PathVariable("age") int age) {
-        logger.debug("age");
+        logger.debug("Get By Age");
         HttpHeaders headers = new HttpHeaders();
-        headers.add("desc", "Getting Farmers based on Age");
+        headers.add("desc", "Getting Farmer details");
+        headers.add("info", "Getting Farmer details");
         List<Farmer> farmers = farmerService.getByAge(age);
-        logger.info("got age"+farmers);
-        ResponseEntity<List<Farmer>> farmerResponse = new ResponseEntity(farmers, HttpStatus.OK);
+        logger.info("All" + farmers);
+        ResponseEntity<List<Farmer>> farmerResponse = new ResponseEntity(farmers, headers, HttpStatus.OK);
         return farmerResponse;
     }
 
+    /**
+     *
+     * @param start
+     * @param end
+     * @return
+     */
     @GetMapping("/farmers/age/start/{start}/end/{end}")
     ResponseEntity<List<Farmer>> getByAgeBetween(@PathVariable("start") int start, @PathVariable("end") int end) {
-        logger.debug("Framer age between");
+        logger.debug("Get By Name");
         HttpHeaders headers = new HttpHeaders();
-        headers.add("desc", "Getting Farmers Age in Between ");
-        List<Farmer> farmers = farmerService.getByAgeBetween(start,end);
-        logger.info("got farmer age between"+farmers);
-        ResponseEntity<List<Farmer>> farmerResponse = new ResponseEntity(farmers, HttpStatus.OK);
+        headers.add("desc", "Getting Farmer details");
+        headers.add("info", "Getting Farmer details");
+        List<Farmer> farmers = farmerService.getByAgeBetween(start, end);
+        logger.info("All" + farmers);
+        ResponseEntity<List<Farmer>> farmerResponse = new ResponseEntity(farmers, headers, HttpStatus.OK);
         return farmerResponse;
     }
-
-    @GetMapping("/orders/farmers/id/{farmerId}")
-    ResponseEntity<List<Object>> getOrdersByFarmerId(@PathVariable("farmerId") int farmerId) {
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("desc", "Getting Farmers Age in Between ");
-        List<Object> objects = farmerService.getByFarmerId(farmerId);
-        ResponseEntity<List<Object>> objectResponse = new ResponseEntity(objects, HttpStatus.OK);
-        return objectResponse;
-    }
-
-
 
 }

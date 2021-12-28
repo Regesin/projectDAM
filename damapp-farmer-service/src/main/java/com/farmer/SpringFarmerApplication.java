@@ -69,8 +69,8 @@ public class SpringFarmerApplication implements CommandLineRunner{
         Farmer farmer1=new Farmer("Mallika",20,Gender.F,"8676521987",farmDetailsSet1);
         Farmer farmer2=new Farmer("Divya",20,Gender.F,"8976421987",farmDetailsSet2);
 
-//        farmerService.addFarmer(farmer1);
-//        farmerService.addFarmer(farmer2);
+        farmerService.addFarmer(farmer1);
+        farmerService.addFarmer(farmer2);
 
 
 

@@ -37,6 +37,14 @@ public class FarmDetails {
     @JoinColumn(name="farmid")
     private Set<Produce> produces;
 
+    /**
+     *
+     * @param acres
+     * @param soil
+     * @param city
+     * @param zipcode
+     * @param produces
+     */
     public FarmDetails(double acres, String soil, String city, int zipcode, Set<Produce> produces) {
         this.acres = acres;
         this.soil = soil;

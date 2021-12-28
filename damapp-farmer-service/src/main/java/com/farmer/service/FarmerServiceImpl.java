@@ -32,33 +32,63 @@ public class FarmerServiceImpl implements IFarmerService {
         this.farmerRepository = farmerRepository;
     }
 
+    /**
+     *
+     * @param farmer
+     */
     @Override
     public void addFarmer(Farmer farmer) {
          farmerRepository.save(farmer);
     }
 
+    /**
+     *
+     * @param farmer
+     * @throws FarmerNotFoundException
+     */
     @Override
     public void updateFarmer(Farmer farmer) throws FarmerNotFoundException {
          farmerRepository.save(farmer);
     }
 
+    /**
+     *
+     * @param farmerId
+     * @throws FarmerNotFoundException
+     */
     @Override
     public void deleteFarmer(int farmerId) throws FarmerNotFoundException {
         farmerRepository.deleteById(farmerId);
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Farmer> getAll() {
         List<Farmer> farmers = farmerRepository.findAll();
         return farmers;
     }
 
+    /**
+     *
+     * @param farmerId farmerId from Farmer
+     * @return Returns a Farmer found in the database
+     * @throws FarmerNotFoundException If no farmer found in the database for the provided info
+     */
     @Override
     public Farmer getById(int farmerId) throws FarmerNotFoundException {
 
         return farmerRepository.getById(farmerId);
     }
 
+    /**
+     *
+     * @param name name from Farmer
+     * @return Returns Farmers found in the database
+     * @throws FarmerNotFoundException If no farmer found in the database for the provided info
+     */
     @Override
     public List<Farmer> getByName(String name) throws FarmerNotFoundException {
         List<Farmer> farmers = farmerRepository.findByName(name);
@@ -67,6 +97,12 @@ public class FarmerServiceImpl implements IFarmerService {
         return farmers;
     }
 
+    /**
+     *
+     * @param mobileNo mobileNo from Farmer
+     * @return Returns Farmers found in the database
+     * @throws FarmerNotFoundException If no farmer found in the database for the provided info
+     */
     @Override
     public List<Farmer> getByMobile(String mobileNo) throws FarmerNotFoundException {
         List<Farmer> farmers = farmerRepository.findByMobileNo(mobileNo);
@@ -75,6 +111,12 @@ public class FarmerServiceImpl implements IFarmerService {
         return farmers;
     }
 
+    /**
+     *
+     * @param gender gender from Farmer
+     * @return Returns Farmers found in the database
+     * @throws FarmerNotFoundException If no farmer found in the database for the provided info
+     */
     @Override
     public List<Farmer> getByGender(String gender) throws FarmerNotFoundException {
         List<Farmer> farmers = farmerRepository.findByGender(Gender.valueOf(gender));
@@ -83,6 +125,12 @@ public class FarmerServiceImpl implements IFarmerService {
         return farmers;
     }
 
+    /**
+     *
+     * @param age age from Farmer
+     * @return Returns Farmers found in the database
+     * @throws FarmerNotFoundException If no farmer found in the database for the provided info
+     */
     @Override
     public List<Farmer> getByAge(int age) throws FarmerNotFoundException {
         List<Farmer> farmers = farmerRepository.findByAge(age);
@@ -91,11 +139,18 @@ public class FarmerServiceImpl implements IFarmerService {
         return farmers;
     }
 
+    /**
+     *
+     * @param start startDate from Farmer
+     * @param end endDate from Farmer
+     * @return Returns Farmers found in the database
+     * @throws FarmerNotFoundException If no farmer found in the database for the provided info
+     */
     @Override
     public List<Farmer> getByAgeBetween(int start, int end) throws FarmerNotFoundException {
         List<Farmer> farmers = farmerRepository.findByAgeBetween(start, end);
         if (farmers.isEmpty())
-            throw new FarmerNotFoundException("Farmers Age between Not foun");
+            throw new FarmerNotFoundException("Farmers Age between Not found");
         return farmers;
 
     }

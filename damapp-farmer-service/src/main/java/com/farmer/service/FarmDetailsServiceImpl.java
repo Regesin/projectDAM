@@ -32,22 +32,40 @@ public class FarmDetailsServiceImpl implements IFarmDetailsService {
         this.farmDetailsRepository = farmDetailsRepository;
     }
 
+    /**
+     *
+     * @param farmDetails
+     */
     @Override
     public void addFarm(FarmDetails farmDetails) {
         farmDetailsRepository.save(farmDetails);
     }
 
+    /**
+     *
+     * @param farmDetails
+     */
     @Override
     public void updateFarm(FarmDetails farmDetails) {
         farmDetailsRepository.save(farmDetails);
 
     }
 
+    /**
+     *
+     * @param farmId
+     * @throws FarmNotFoundException
+     */
     @Override
     public void deleteFarm(int farmId) throws FarmNotFoundException {
         farmDetailsRepository.deleteById(farmId);
     }
 
+    /**
+     *
+     * @return Returns a FarmDetails found in the database
+     * @throws FarmNotFoundException If no Farm is found in the database for the provided info
+     */
     @Override
     public List<FarmDetails> getAll() throws FarmNotFoundException {
         List<FarmDetails> farmDetails = farmDetailsRepository.findAll();
@@ -56,6 +74,12 @@ public class FarmDetailsServiceImpl implements IFarmDetailsService {
         return farmDetails;
     }
 
+    /**
+     *
+     * @param acres  acres in the FarmDetails
+     * @return Returns a FarmDetails found in database
+     * @throws FarmNotFoundException If no Farm is found in the database for the provided info
+     */
     @Override
     public List<FarmDetails> getByAcres(double acres) throws FarmNotFoundException {
         List<FarmDetails> farmDetails = farmDetailsRepository.findByAcres(acres);
@@ -64,6 +88,12 @@ public class FarmDetailsServiceImpl implements IFarmDetailsService {
         return farmDetails;
     }
 
+    /**
+     *
+     * @param city city in the FarmDetails
+     * @return Returns a FarmDetails found in database
+     * @throws FarmNotFoundException If no Farm is found in the database for the provided info
+     */
     @Override
     public List<FarmDetails> getByCity(String city) throws FarmNotFoundException {
         List<FarmDetails> farmDetails = farmDetailsRepository.findByCity(city);
@@ -72,6 +102,12 @@ public class FarmDetailsServiceImpl implements IFarmDetailsService {
         return farmDetails;
     }
 
+    /**
+     *
+     * @param soil soil in the FarmDetails
+     * @return Returns a FarmDetails found in database
+     * @throws FarmNotFoundException If no Farm is found in the database for the provided info
+     */
     @Override
     public List<FarmDetails> getBySoil(String soil) throws FarmNotFoundException {
         List<FarmDetails> farmDetails = farmDetailsRepository.findBySoil(soil);
@@ -80,6 +116,12 @@ public class FarmDetailsServiceImpl implements IFarmDetailsService {
         return farmDetails;
     }
 
+    /**
+     *
+     * @param zipcode zipcode in the FarmDetails
+     * @return Returns a FarmDetails found in database
+     * @throws FarmNotFoundException If no Farm is found in the database for the provided info
+     */
     @Override
     public List<FarmDetails> getBYZipcode(String zipcode) throws FarmNotFoundException {
         List<FarmDetails> farmDetails = farmDetailsRepository.findByZipcode(zipcode);
@@ -88,6 +130,13 @@ public class FarmDetailsServiceImpl implements IFarmDetailsService {
         return farmDetails;
     }
 
+    /**
+     *
+     * @param acres acres in the FarmDetails
+     * @param city city in the FarmDetails
+     * @return Returns a FarmDetails found in database
+     * @throws FarmerNotFoundException If no Farm is found in the database for the provided info
+     */
     @Override
     public List<FarmDetails> getByAcersCity(double acres, String city) throws FarmerNotFoundException {
         List<FarmDetails> farmDetails = farmDetailsRepository.findByAcersCity(acres, city);
@@ -96,6 +145,13 @@ public class FarmDetailsServiceImpl implements IFarmDetailsService {
         return farmDetails;
     }
 
+    /**
+     *
+     * @param city city in the FarmDetails
+     * @param soil soil in the Farmdetails
+     * @return Returns a FarmDetails found in database
+     * @throws FarmerNotFoundException If no Farm is found in the database for the provided info
+     */
     @Override
     public List<FarmDetails> getByCitySoil(String city, String soil) throws FarmerNotFoundException {
         List<FarmDetails> farmDetails = farmDetailsRepository.findByCitySoil(city, soil);
@@ -104,6 +160,13 @@ public class FarmDetailsServiceImpl implements IFarmDetailsService {
         return farmDetails;
     }
 
+    /**
+     *
+     * @param zipcode zipcode in the FarmDetails
+     * @param soil soil in the FarmDetails
+     * @return Returns a FarmDetails found in database
+     * @throws FarmNotFoundException If no Farm is found in the database for the provided info
+     */
     @Override
     public List<FarmDetails> getByZipcodeSoil(String zipcode, String soil) throws FarmNotFoundException {
         List<FarmDetails> farmDetails = farmDetailsRepository.findByZipcodeSoil(zipcode, soil);
@@ -112,6 +175,11 @@ public class FarmDetailsServiceImpl implements IFarmDetailsService {
         return farmDetails;
     }
 
+    /**
+     *
+     * @param produceId produceId in the FarmDetails
+     * @return Returns a FarmDetails found in database
+     */
     @Override
     public Produce getByProduceId(int produceId) {
         String url=BASEURL+"/produces/id/"+produceId;
