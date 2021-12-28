@@ -31,4 +31,6 @@ public interface IFarmerService {
      List<Farmer> getByAge(int age) throws FarmerNotFoundException;
 
      List<Farmer> getByAgeBetween(int start, int end) throws FarmerNotFoundException;
+
+     List<Object> getByFarmerId(int farmerId);
 }

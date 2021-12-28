@@ -7,6 +7,7 @@ import com.produce.model.Type;
 import com.produce.repository.IProduceRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -96,24 +97,17 @@ public class ProduceServiceImpl implements IProduceService {
         return null;
     }
 
-//    @Override
-//    public List<Produce> getByDateAndTime(String date) {
-//        String dateTime=date;
-//        DateTimeFormatter formatter= DateTimeFormatter.ofPattern("yyyy-MM-dd");
-//        LocalDateTime dateTime1=LocalDateTime.parse(dateTime,formatter);
-//        return produceRepository.getByDateTime(dateTime1);
-//    }
+
 
     @Override
     public List<Produce> getByDate(String date) {
-        return null;
+        List<Produce> produces=produceRepository.findByDate(LocalDate.parse(date));
+        if(produces.isEmpty()){
+            throw new ProduceNotFoundException("Invalid");
+        }
+        return produces;
     }
 
-//    @Override
-//    public List<Produce> getByDate(String date) {
-//        String dateTime=date;
-//        DateTimeFormatter formatter=DateTimeFormatter.
-//    }
 
 
 }

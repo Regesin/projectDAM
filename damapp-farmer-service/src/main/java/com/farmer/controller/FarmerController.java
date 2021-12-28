@@ -114,4 +114,15 @@ public class FarmerController {
         return farmerResponse;
     }
 
+    @GetMapping("/orders/farmers/id/{farmerId}")
+    ResponseEntity<List<Object>> getOrdersByFarmerId(@PathVariable("farmerId") int farmerId) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("desc", "Getting Farmers Age in Between ");
+        List<Object> objects = farmerService.getByFarmerId(farmerId);
+        ResponseEntity<List<Object>> objectResponse = new ResponseEntity(objects, HttpStatus.OK);
+        return objectResponse;
+    }
+
+
+
 }

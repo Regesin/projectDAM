@@ -63,6 +63,18 @@ public class orderController {
         return orderResponse;
     }
 
+    @GetMapping("/orders/farmers/id/{farmerId}")
+    public ResponseEntity<List<Object>> getByFarmerId(@PathVariable("farmerId") int farmerId){
+        logger.debug("Get All Order");
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("desc", "Getting Orders details");
+        headers.add("info", "Getting Orders details");
+        List<Object> objects = orderService.getByFarmerId(farmerId);
+        logger.info("All" + objects);
+        ResponseEntity<List<Object>> objectResponse = new ResponseEntity(objects, headers, HttpStatus.OK);
+        return objectResponse;
+    }
+
 
 
 }

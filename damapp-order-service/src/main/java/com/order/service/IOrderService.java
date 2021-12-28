@@ -18,5 +18,6 @@ public interface IOrderService {
 
     List<Order> getByCompanyId(int companyId) throws OrderNotFoundException;
 
+    List<Object> getByFarmerId(int farmerId);
 
 }

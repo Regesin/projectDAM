@@ -31,8 +31,8 @@ public interface IProduceRepository extends JpaRepository<Produce,Integer>{
 //    @Query("from Produce p where p.startDate=?1")
 //    List<Produce> getByDateTime(LocalDateTime date);
 //
-//    @Query("from Produce p where p.startT.get=?1")
-//    List<Produce> getByDate(String date);
+    @Query("from Produce p where p.startDate=?1")
+    List<Produce> findByDate(LocalDate date);
 
 
 

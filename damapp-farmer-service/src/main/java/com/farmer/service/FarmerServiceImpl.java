@@ -7,14 +7,25 @@ package com.farmer.service;/*
 import com.farmer.exceptions.FarmerNotFoundException;
 import com.farmer.model.Farmer;
 import com.farmer.model.Gender;
+import com.farmer.model.Produce;
 import com.farmer.repository.IFarmerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Service
 public class FarmerServiceImpl implements IFarmerService {
-
+    public static final String BASEURL="http://ORDER-SERVICE/order-api";
+    RestTemplate restTemplate;
+    @Autowired
+    public void setRestTemplate(@Lazy RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
     IFarmerRepository farmerRepository;
 
     public FarmerServiceImpl(IFarmerRepository farmerRepository) {
@@ -88,4 +99,15 @@ public class FarmerServiceImpl implements IFarmerService {
         return farmers;
 
     }
+
+    @Override
+    public List<Object> getByFarmerId(int farmerId) {
+        String url=BASEURL+"/orders/farmers/id/"+farmerId;
+        List<Object> objects=restTemplate.getForObject(url,List.class);
+        System.out.println(objects);
+        return objects;
+
+    }
+
+
 }

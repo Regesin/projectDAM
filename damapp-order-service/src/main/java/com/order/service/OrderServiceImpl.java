@@ -35,5 +35,10 @@ public class OrderServiceImpl implements IOrderService{
         return orderRepository.getByCompanyId(companyId);
     }
 
+    @Override
+    public List<Object> getByFarmerId(int farmerId) {
+        return  orderRepository.getByFarmerId(farmerId);
+    }
+
 
 }
