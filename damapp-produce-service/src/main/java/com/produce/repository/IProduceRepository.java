@@ -26,5 +26,20 @@ public interface IProduceRepository extends JpaRepository<Produce,Integer>{
     List<Produce> findByProFerti(String produce, Fertilizer fertilizer) throws ProduceNotFoundException;
 
     @Query("from Produce p where p.startDate=?1")
-    List<Produce> findByDate(LocalDate date);
+    List<Produce> findByStartDate(LocalDate startdate)  throws ProduceNotFoundException;
+
+    @Query("from Produce p where p.endDate=?1")
+    List<Produce> findByEndDate(LocalDate enddate)  throws ProduceNotFoundException;
+
+    @Query("from Produce p where p.bidPrice<?1")
+    List<Produce> findByBidPriceLessThan(double bidPrice)  throws ProduceNotFoundException;
+
+    @Query("from Produce p where p.bidPrice between ?1 and ?2")
+    List<Produce> findByBidPriceBetween(double startPrice,double endPrice)  throws ProduceNotFoundException;
+
+    @Query("from Produce p where p.type=?1 and p.produce=?2")
+    List<Produce> findByTypeProduce(Type type,String produce) throws ProduceNotFoundException;
+
+
+
 }

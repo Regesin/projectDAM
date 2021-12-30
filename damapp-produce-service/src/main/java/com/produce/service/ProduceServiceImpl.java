@@ -26,9 +26,7 @@ public class ProduceServiceImpl implements IProduceService {
     }
 
     /**
-     *
-     * @param produce
-     * Here adding the produce
+     * @param produce Here adding the produce
      * @throws ProduceNotFoundException
      */
 
@@ -38,9 +36,7 @@ public class ProduceServiceImpl implements IProduceService {
     }
 
     /**
-     *
-     * @param produce
-     * Here updating the produce
+     * @param produce Here updating the produce
      * @throws ProduceNotFoundException
      */
 
@@ -50,9 +46,7 @@ public class ProduceServiceImpl implements IProduceService {
     }
 
     /**
-     *
-     * @param produceId
-     * Here deleting the produce
+     * @param produceId Here deleting the produce
      * @throws ProduceNotFoundException
      */
 
@@ -62,7 +56,6 @@ public class ProduceServiceImpl implements IProduceService {
     }
 
     /**
-     *
      * @param produceId in the produce
      * @return Returns a Produce found in the database
      * @throws ProduceNotFoundException if no Produce found in the database it should throw exception
@@ -74,7 +67,6 @@ public class ProduceServiceImpl implements IProduceService {
     }
 
     /**
-     *
      * @return a list of Produce found in the database
      */
 
@@ -84,7 +76,6 @@ public class ProduceServiceImpl implements IProduceService {
     }
 
     /**
-     *
      * @param kind in the Produce
      * @return Returns list of produce with kind
      * @throws ProduceNotFoundException if kind is not there throws exception
@@ -92,15 +83,14 @@ public class ProduceServiceImpl implements IProduceService {
 
     @Override
     public List<Produce> getByKind(String kind) throws ProduceNotFoundException {
-        List<Produce> produces=produceRepository.findByKind(kind);
-        if(produces.isEmpty()){
+        List<Produce> produces = produceRepository.findByKind(kind);
+        if (produces.isEmpty()) {
             throw new ProduceNotFoundException("Invalid");
         }
         return produces;
     }
 
     /**
-     *
      * @param produce in the produce
      * @return Returns list of Produce with  produce and it returns produces
      * @throws ProduceNotFoundException if produce is not there throws an exception
@@ -108,8 +98,8 @@ public class ProduceServiceImpl implements IProduceService {
 
     @Override
     public List<Produce> getByProduce(String produce) throws ProduceNotFoundException {
-        List<Produce> produces=produceRepository.findByProduce(produce);
-        if(produces.isEmpty()){
+        List<Produce> produces = produceRepository.findByProduce(produce);
+        if (produces.isEmpty()) {
             throw new ProduceNotFoundException("Invalid");
         }
         return produces;
@@ -117,7 +107,6 @@ public class ProduceServiceImpl implements IProduceService {
     }
 
     /**
-     *
      * @param type
      * @return produces with type
      * @throws ProduceNotFoundException if not throws exception
@@ -125,15 +114,14 @@ public class ProduceServiceImpl implements IProduceService {
 
     @Override
     public List<Produce> getByType(String type) throws ProduceNotFoundException {
-        List<Produce> produces=produceRepository.findByType(Type.valueOf(type));
-        if (produces.isEmpty()){
+        List<Produce> produces = produceRepository.findByType(Type.valueOf(type));
+        if (produces.isEmpty()) {
             throw new ProduceNotFoundException("Invalid");
         }
         return produces;
     }
 
     /**
-     *
      * @param produce
      * @param quintal
      * @param bidPrice
@@ -143,8 +131,8 @@ public class ProduceServiceImpl implements IProduceService {
 
     @Override
     public List<Produce> getByProQuiBid(String produce, double quintal, double bidPrice) throws ProduceNotFoundException {
-        List<Produce> produces=produceRepository.findByProQuiBid(produce,quintal,bidPrice);
-        if(produces.isEmpty()){
+        List<Produce> produces = produceRepository.findByProQuiBid(produce, quintal, bidPrice);
+        if (produces.isEmpty()) {
             throw new ProduceNotFoundException("Invalid");
 
         }
@@ -152,7 +140,6 @@ public class ProduceServiceImpl implements IProduceService {
     }
 
     /**
-     *
      * @param produce
      * @param fertilizer
      * @return produces found in the database
@@ -161,8 +148,8 @@ public class ProduceServiceImpl implements IProduceService {
 
     @Override
     public List<Produce> getByProFerti(String produce, String fertilizer) throws ProduceNotFoundException {
-        List<Produce> produces=produceRepository.findByProFerti(produce, Fertilizer.valueOf(fertilizer));
-        if (produces.isEmpty()){
+        List<Produce> produces = produceRepository.findByProFerti(produce, Fertilizer.valueOf(fertilizer));
+        if (produces.isEmpty()) {
             throw new ProduceNotFoundException("Invalid");
         }
         return produces;
@@ -170,21 +157,63 @@ public class ProduceServiceImpl implements IProduceService {
 
 
     /**
-     *
-     * @param date
+     * @param
      * @return produces
      */
     @Override
-    public List<Produce> getByDate(String date) {
-        List<Produce> produces=produceRepository.findByDate(LocalDate.parse(date));
-        if(produces.isEmpty()){
+    public List<Produce> getByStartDate(String startdate) throws ProduceNotFoundException{
+        List<Produce> produces = produceRepository.findByStartDate(LocalDate.parse(startdate));
+        if (produces.isEmpty()) {
             throw new ProduceNotFoundException("invalid");
         }
         return produces;
 
 
+    }
+
+    @Override
+    public List<Produce> getByEndDate(String enddate) throws ProduceNotFoundException {
+        List<Produce> produces = produceRepository.findByEndDate(LocalDate.parse(enddate));
+        if (produces.isEmpty()) {
+            throw new ProduceNotFoundException("invalid");
+        }
+        return produces;
 
     }
 
+    @Override
+    public List<Produce> getByBidPriceLessThan(double bidPrice) throws ProduceNotFoundException{
+        List<Produce> produces = produceRepository.findByBidPriceLessThan(bidPrice);
+        if (produces.isEmpty()) {
+            throw new ProduceNotFoundException("Invalid");
+
+        }
+        return produces;
+    }
+
+    @Override
+    public List<Produce> getByBidPriceBetween(double startPrice,double endPrice) throws ProduceNotFoundException {
+        List<Produce> produces = produceRepository.findByBidPriceBetween(startPrice,endPrice);
+        if (produces.isEmpty()) {
+            throw new ProduceNotFoundException("Invalid");
+
+        }
+        return produces;
+
+    }
+
+    @Override
+    public List<Produce> getByTypeProduce(String type, String produce) throws ProduceNotFoundException {
+        List<Produce> produces = produceRepository.findByTypeProduce(Type.valueOf(type), produce);
+        if (produces.isEmpty()) {
+            throw new ProduceNotFoundException("Invalid");
+
+        }
+        return produces;
+    }
 
 }
+
+
+
+

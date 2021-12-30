@@ -32,6 +32,16 @@ public interface IProduceService {
 
      List<Produce> getByProFerti(String produce,String fertilizer) throws ProduceNotFoundException;
 
-     List<Produce> getByDate(String date);
+     List<Produce> getByStartDate(String startdate) throws ProduceNotFoundException;
+
+     List<Produce> getByEndDate(String enddate) throws ProduceNotFoundException;
+
+     List<Produce> getByBidPriceLessThan(double bidPrice) throws ProduceNotFoundException;
+
+     List<Produce> getByBidPriceBetween(double startPrice,double endPrice) throws ProduceNotFoundException;
+
+     List<Produce> getByTypeProduce(String type,String produce) throws ProduceNotFoundException;
+
+
 
 }
