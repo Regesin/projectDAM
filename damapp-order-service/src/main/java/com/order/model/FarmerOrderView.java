@@ -22,4 +22,5 @@ public interface FarmerOrderView {
     String getSTATE();
     String getPRODUCE();
     Double getQUINTAL();
+    Integer getFARMER_ID();
 }

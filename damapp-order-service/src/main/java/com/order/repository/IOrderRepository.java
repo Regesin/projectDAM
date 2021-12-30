@@ -17,10 +17,7 @@ public interface IOrderRepository extends JpaRepository<Order, Integer> {
     @Query("from Order o inner join o.bid b inner join b.company c where c.companyId = ?1 order by o.dateTime")
     List<Order> getByCompanyId(int companyId);
 
-//    @Query(value = "select produceid as produceid, farmdetails.farmid as farmid from orders INNER JOIN bids on orders.bidid = bids.bidid INNER JOIN produces on bids.produceid = produces.produceid INNER JOIN farmdetails on produces.farmid = farmdetails.farmid where farmer_id = ?1",nativeQuery = true)
-    @Query(value = "select * from farmerOrderview", nativeQuery = true)
+    @Query(value = "select * from farmerorderview where farmer_id = ?1", nativeQuery = true)
     List<FarmerOrderView> getByFarmerId(int farmerId);
-
-
 
 }
