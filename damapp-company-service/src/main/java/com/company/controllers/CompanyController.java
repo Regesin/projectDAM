@@ -138,7 +138,7 @@ public class CompanyController {
 
     @GetMapping("/companies/order/companyId/{companyId}")
     public ResponseEntity<List<Order>> getByCompany(@PathVariable("companyId") int companyId) {
-        logger.debug("Get All By company");
+        logger.debug("Get company By company id");
         HttpHeaders headers = new HttpHeaders();
         headers.add("desc", "Getting Orders details");
         headers.add("info", "Getting Orders details");
@@ -148,7 +148,118 @@ public class CompanyController {
         return orderResponse;
     }
 
+    @GetMapping("/companies/produces/kind/{kind}")
+    public ResponseEntity<List<Produce>> getByProduceKind(@PathVariable("kind") String kind) {
+        logger.debug("Get produces by kind");
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("desc", "Getting produce details");
+        headers.add("info", "Getting produce details");
+        List<Produce> produces = companyService.getByKind(kind);
+        logger.info("All" + produces);
+        ResponseEntity<List<Produce>> produceResponse = new ResponseEntity(produces, headers, HttpStatus.OK);
+        return produceResponse;
+    }
+    @GetMapping("/companies/produces/produce/{produce}")
+    public ResponseEntity<List<Produce>> getByProduce(@PathVariable("produce") String produce) {
+        logger.debug("Get produces by produce");
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("desc", "Getting produce details");
+        headers.add("info", "Getting produce details");
+        List<Produce> produces = companyService.getByProduce(produce);
+        logger.info("All" + produces);
+        ResponseEntity<List<Produce>> produceResponse = new ResponseEntity(produces, headers, HttpStatus.OK);
+        return produceResponse;
+    }
 
+    @GetMapping("/companies/produces/type/{type}")
+    public ResponseEntity<List<Produce>> getByProduceType(@PathVariable("type") String type) {
+        logger.debug("Get produces by type");
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("desc", "Getting produce details");
+        headers.add("info", "Getting produce details");
+        List<Produce> produces = companyService.getByType(type);
+        logger.info("All" + produces);
+        ResponseEntity<List<Produce>> produceResponse = new ResponseEntity(produces, headers, HttpStatus.OK);
+        return produceResponse;
+    }
+    @GetMapping("/companies/produces/produce/{produce}/quintal/{quintal}/bidPrice/{bidPrice}")
+    public ResponseEntity<List<Produce>> getByProQuiBid(@PathVariable("produce") String produce, @PathVariable("quintal") double quintal, @PathVariable("bidPrice") double bidPrice) {
+        logger.debug("Get produces by produce,quintal,bidprice");
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("desc", "Getting produce details");
+        headers.add("info", "Getting produce details");
+        List<Produce> produces = companyService.getByProQuiBid(produce,quintal,bidPrice);
+        logger.info("All" + produces);
+        ResponseEntity<List<Produce>> produceResponse = new ResponseEntity(produces, headers, HttpStatus.OK);
+        return produceResponse;
+    }
+    @GetMapping("/companies/produces/produce/{produce}/fertilizer/{fertilizer}")
+    public ResponseEntity<List<Produce>> getByProFerti(@PathVariable("produce") String produce, @PathVariable("fertilizer") String fertilizer) {
+        logger.debug("Get produces by produce and fertilizer");
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("desc", "Getting produce details");
+        headers.add("info", "Getting produce details");
+        List<Produce> produces = companyService.getByProFerti(produce,fertilizer);
+        logger.info("All" + produces);
+        ResponseEntity<List<Produce>> produceResponse = new ResponseEntity(produces, headers, HttpStatus.OK);
+        return produceResponse;
+    }
 
+       @GetMapping("/companies/produces/startdate/{startdate}")
+    public ResponseEntity<List<Produce>> getByStartDate(@PathVariable("startdate") String startdate) {
+        logger.debug("Get produces by startdate");
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("desc", "Getting produce details");
+        headers.add("info", "Getting produce details");
+        List<Produce> produces = companyService.getByStartDate(startdate);
+        logger.info("All" + produces);
+        ResponseEntity<List<Produce>> produceResponse = new ResponseEntity(produces, headers, HttpStatus.OK);
+        return produceResponse;
+    }
+
+    @GetMapping("/companies/produces/enddate/{enddate}")
+    public ResponseEntity<List<Produce>> getByEndDate(@PathVariable("enddate") String enddate) {
+        logger.debug("Get produces by enddate");
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("desc", "Getting produce details");
+        headers.add("info", "Getting produce details");
+        List<Produce> produces = companyService.getByEndDate(enddate);
+        logger.info("All" + produces);
+        ResponseEntity<List<Produce>> produceResponse = new ResponseEntity(produces, headers, HttpStatus.OK);
+        return produceResponse;
+    }
+    @GetMapping("/companies/produces/price/{price}")
+    public ResponseEntity<List<Produce>> getByPriceLessThan(@PathVariable("price") double price) {
+        logger.debug("Get produces by price");
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("desc", "Getting produce details");
+        headers.add("info", "Getting produce details");
+        List<Produce> produces = companyService.getByPriceLessThan(price);
+        logger.info("All" + produces);
+        ResponseEntity<List<Produce>> produceResponse = new ResponseEntity(produces, headers, HttpStatus.OK);
+        return produceResponse;
+    }
+    @GetMapping("/companies/produces/startprice/{startprice}/endprice/{endprice}")
+    public ResponseEntity<List<Produce>> getByPriceBetween(@PathVariable("startprice") double startPrice,@PathVariable("endprice") double endPrice) {
+        logger.debug("Get produces by price between");
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("desc", "Getting produce details");
+        headers.add("info", "Getting produce details");
+        List<Produce> produces = companyService.getByPriceBetween(startPrice,endPrice);
+        logger.info("All" + produces);
+        ResponseEntity<List<Produce>> produceResponse = new ResponseEntity(produces, headers, HttpStatus.OK);
+        return produceResponse;
+    }
+    @GetMapping("/companies/produces/type/{type}/produce/{produce}")
+    public ResponseEntity<List<Produce>> getByTypeProduce(@PathVariable("type") String type, @PathVariable("produce") String produce) {
+        logger.debug("Get produces by type and produce");
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("desc", "Getting produce details");
+        headers.add("info", "Getting produce details");
+        List<Produce> produces = companyService.getByTypeProduce(type,produce);
+        logger.info("All" + produces);
+        ResponseEntity<List<Produce>> produceResponse = new ResponseEntity(produces, headers, HttpStatus.OK);
+        return produceResponse;
+    }
 
 }

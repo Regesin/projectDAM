@@ -2,7 +2,9 @@ package com.company.service;
 
 import com.company.exceptions.CompanyNotFoundException;
 import com.company.model.Company;
+import com.company.model.Farmer;
 import com.company.model.Order;
+import com.company.model.Produce;
 
 import java.util.List;
 
@@ -39,7 +41,28 @@ public interface ICompanyService {
 
     public List<Company> getByLocation(String location) throws CompanyNotFoundException;
 
-
-
     public List<Order> getByCompanyId(int companyId) ;
+    //getByKind, getByProduce, getByType, getByProQuiBid, getByProFerti, getByStartDate, getByEndDate
+
+    List<Produce> getByKind(String kind) ;
+
+    List<Produce> getByProduce(String produce) ;
+
+    List<Produce> getByType(String type) ;
+
+    List<Produce> getByProQuiBid(String produce,double quintal, double bidPrice) ;
+
+    List<Produce> getByProFerti(String produce,String fertilizer) ;
+
+    List<Produce> getByStartDate(String startDate);
+    List<Produce> getByEndDate(String endDate);
+    List<Produce> getByPriceLessThan(double price);
+    List<Produce> getByPriceBetween(double startPrice,double endPrice);
+    List<Produce> getByTypeProduce(String type,String  produce);
+
+
+
+
+
+
 }

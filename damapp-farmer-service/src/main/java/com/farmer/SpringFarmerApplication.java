@@ -49,25 +49,25 @@ public class SpringFarmerApplication implements CommandLineRunner{
     @Override
     public void run(String... args) throws Exception {
 
-        Produce produce1=farmDetailsService.getByProduceId(1);
+        Produce produce1=farmDetailsService.getByProduceId(5);
 
-        Produce produce2=farmDetailsService.getByProduceId(2);
+        Produce produce2=farmDetailsService.getByProduceId(6);
 
         Set producesSet1=new HashSet<>(Arrays.asList(produce1));
 
         Set producesSet2=new HashSet<>(Arrays.asList(produce2));
 
-        FarmDetails farmDetails1=new FarmDetails(2.5,"Red","Kadapa",515008,producesSet1);
+        FarmDetails farmDetails1=new FarmDetails(20,"Black","Khammam",512108,producesSet1);
 
-        FarmDetails farmDetails2=new FarmDetails(2.5,"Red","Kadapa",515008,producesSet2);
+        FarmDetails farmDetails2=new FarmDetails(15,"Red","Chittoor",516008,producesSet2);
 
         Set farmDetailsSet1=new HashSet<>(Arrays.asList(farmDetails1));
 
         Set farmDetailsSet2=new HashSet<>(Arrays.asList(farmDetails2));
 
 
-        Farmer farmer1=new Farmer("Mallika",20,Gender.F,"8676521987",farmDetailsSet1);
-        Farmer farmer2=new Farmer("Divya",20,Gender.F,"8976421987",farmDetailsSet2);
+        Farmer farmer1=new Farmer("Arun",21,Gender.M,"8176521937",farmDetailsSet1);
+        Farmer farmer2=new Farmer("Sree",20,Gender.M,"8976443987",farmDetailsSet2);
 
 //        farmerService.addFarmer(farmer1);
 //        farmerService.addFarmer(farmer2);

@@ -122,7 +122,7 @@ public class ProduceController {
         return produceResponse;
     }
 
-    @GetMapping("produces/produce/{produce}/fertilizer/{fertilizer}")
+    @GetMapping("/produces/produce/{produce}/fertilizer/{fertilizer}")
     public ResponseEntity<List<Produce>> getByProFerti(@PathVariable("produce") String produce, @PathVariable("fertilizer") String fertilizer) {
         logger.debug("Get produce fertilizer");
         HttpHeaders headers = new HttpHeaders();
@@ -136,8 +136,8 @@ public class ProduceController {
     }
 
 
-    @GetMapping("produces/startdate/{startdate}")
-    public List<Produce> getByStartDate(@PathVariable("startdate") String startdate) {
+    @GetMapping("/produces/startdate/{startdate}")
+    public ResponseEntity<List<Produce>> getByStartDate(@PathVariable("startdate") String startdate) {
         logger.debug("Get Date");
         HttpHeaders headers = new HttpHeaders();
         headers.add("desc", "Getting produce date");
@@ -145,11 +145,11 @@ public class ProduceController {
         List<Produce> produces = produceService.getByStartDate(startdate);
         logger.info("Date" + produces);
         ResponseEntity<List<Produce>> produceResponse = new ResponseEntity(produces, headers, HttpStatus.OK);
-        return produces;
+        return produceResponse;
     }
 
-    @GetMapping("produces/enddate/{enddate}")
-    public List<Produce> getByEndDate(@PathVariable("enddate") String enddate) {
+    @GetMapping("/produces/enddate/{enddate}")
+    public ResponseEntity<List<Produce>> getByEndDate(@PathVariable("enddate") String enddate) {
         logger.debug("Get Date");
         HttpHeaders headers = new HttpHeaders();
         headers.add("desc", "Getting produce date");
@@ -157,11 +157,11 @@ public class ProduceController {
         List<Produce> produces = produceService.getByStartDate(enddate);
         logger.info("Date" + produces);
         ResponseEntity<List<Produce>> produceResponse = new ResponseEntity(produces, headers, HttpStatus.OK);
-        return produces;
+        return produceResponse;
     }
 
-    @GetMapping("produces/price/{price}")
-    public List<Produce> getByBidPriceLessThan(@PathVariable("price") double bidPrice) {
+    @GetMapping("/produces/price/{price}")
+    public ResponseEntity<List<Produce>> getByBidPriceLessThan(@PathVariable("price") double bidPrice) {
         logger.debug("Get price less");
         HttpHeaders headers = new HttpHeaders();
         headers.add("desc", "Getting produce date");
@@ -169,11 +169,11 @@ public class ProduceController {
         List<Produce> produces = produceService.getByBidPriceLessThan(bidPrice);
         logger.info("price less" + produces);
         ResponseEntity<List<Produce>> produceResponse = new ResponseEntity(produces, headers, HttpStatus.OK);
-        return produces;
+        return produceResponse;
     }
 
-    @GetMapping("produces/startprice/{startprice}/endprice/{endprice}")
-    public List<Produce> getByBidPriceBetween(@PathVariable("startprice") double startPrice,@PathVariable("endprice") double endPrice) {
+    @GetMapping("/produces/startprice/{startprice}/endprice/{endprice}")
+    public ResponseEntity<List<Produce>> getByBidPriceBetween(@PathVariable("startprice") double startPrice,@PathVariable("endprice") double endPrice) {
         logger.debug("Get Price btw");
         HttpHeaders headers = new HttpHeaders();
         headers.add("desc", "Getting produce date");
@@ -181,11 +181,11 @@ public class ProduceController {
         List<Produce> produces = produceService.getByBidPriceBetween(startPrice,endPrice);
         logger.info("Price btw" + produces);
         ResponseEntity<List<Produce>> produceResponse = new ResponseEntity(produces, headers, HttpStatus.OK);
-        return produces;
+        return produceResponse;
     }
 
-    @GetMapping("produces/type/{type}/produce/{produce}")
-    public List<Produce> getByTypeProduce(@PathVariable("type") String type, @PathVariable("produce") String produce) {
+    @GetMapping("/produces/type/{type}/produce/{produce}")
+    public ResponseEntity<List<Produce>> getByTypeProduce(@PathVariable("type") String type, @PathVariable("produce") String produce) {
         logger.debug("Get Price btw");
         HttpHeaders headers = new HttpHeaders();
         headers.add("desc", "Getting produce date");
@@ -193,7 +193,7 @@ public class ProduceController {
         List<Produce> produces = produceService.getByTypeProduce(type, produce);
         logger.info("Price btw" + produces);
         ResponseEntity<List<Produce>> produceResponse = new ResponseEntity(produces, headers, HttpStatus.OK);
-        return produces;
+        return produceResponse;
 
 
     }

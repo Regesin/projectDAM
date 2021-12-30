@@ -4,6 +4,7 @@ import com.company.exceptions.CompanyNotFoundException;
 import com.company.model.Company;
 
 import com.company.model.Order;
+import com.company.model.Produce;
 import com.company.repository.ICompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -16,6 +17,7 @@ import java.util.List;
 public class ICompanyServiceImpl implements ICompanyService {
 
     public  static final String BASEURL="http://ORDER-SERVICE/order-api";
+    public static final String BASEURL1="http://PRODUCE-SERVICE/produce-api";
     RestTemplate restTemplate;
     @Autowired
     public void setRestTemplate(@Lazy RestTemplate restTemplate) {
@@ -167,5 +169,84 @@ public class ICompanyServiceImpl implements ICompanyService {
         return orders;
     }
 
+    @Override
+    public List<Produce> getByKind(String kind) {
+        String url=BASEURL1+"/produces/kind/"+kind;
+        List<Produce> produces=restTemplate.getForObject(url,List.class);
+        System.out.println(produces);
+        return produces;
+    }
+
+    @Override
+    public List<Produce> getByProduce(String produce) {
+        String url=BASEURL1+"/produces/produce/"+produce;
+        List<Produce> produces=restTemplate.getForObject(url,List.class);
+        System.out.println(produces);
+        return produces;
+    }
+
+    @Override
+    public List<Produce> getByType(String type) {
+        String url=BASEURL1+"/produces/type/"+type;
+        List<Produce> produces=restTemplate.getForObject(url,List.class);
+        System.out.println(produces);
+        return produces;
+    }
+
+    @Override
+    public List<Produce> getByProQuiBid(String produce, double quintal, double bidPrice) {
+        String url=BASEURL1+"/produces/produce/"+produce+"/quintal/"+quintal+"/bidPrice/"+bidPrice;
+        List<Produce> produces=restTemplate.getForObject(url,List.class);
+        System.out.println(produces);
+        return produces;
+    }
+
+    @Override
+    public List<Produce> getByProFerti(String produce, String fertilizer) {
+        String url=BASEURL1+"/produces/produce/"+produce+"/fertilizer/"+fertilizer;
+        List<Produce> produces=restTemplate.getForObject(url,List.class);
+        System.out.println(produces);
+        return produces;
+    }
+
+    @Override
+    public List<Produce> getByStartDate(String startDate) {
+        String url=BASEURL1+"/produces/startdate/"+startDate;
+        List<Produce> produces=restTemplate.getForObject(url,List.class);
+        System.out.println(produces);
+        return produces;
+    }
+
+    @Override
+    public List<Produce> getByEndDate(String endDate) {
+        String url=BASEURL1+"/produces/enddate/"+endDate;
+        List<Produce> produces=restTemplate.getForObject(url,List.class);
+        System.out.println(produces);
+        return produces;
+    }
+
+    @Override
+    public List<Produce> getByPriceLessThan(double price) {
+        String url=BASEURL1+"/produces/price/"+price;
+        List<Produce> produces=restTemplate.getForObject(url,List.class);
+        System.out.println(produces);
+        return produces;
+    }
+
+    @Override
+    public List<Produce> getByPriceBetween(double startPrice, double endPrice) {
+        String url=BASEURL1+"/produces/startprice/"+startPrice+"/endprice/"+endPrice;
+        List<Produce> produces=restTemplate.getForObject(url,List.class);
+        System.out.println(produces);
+        return produces;
+    }
+
+    @Override
+    public List<Produce> getByTypeProduce(String type, String produce) {
+        String url=BASEURL1+"/produces/type/"+type+"/produce/"+produce;
+        List<Produce> produces=restTemplate.getForObject(url,List.class);
+        System.out.println(produces);
+        return produces;
+    }
 
 }
